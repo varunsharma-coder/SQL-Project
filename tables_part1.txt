@@ -1,0 +1,70 @@
+SQL> @table_creation.sql
+SQL> 
+SQL> CREATE TABLE BoatN (
+  2  Bnum CHAR(3) PRIMARY KEY,
+  3  Btype VARCHAR2(20),
+  4  Capacity NUMBER(2));
+
+Table created.
+
+SQL> 
+SQL> CREATE TABLE SkipperN (
+  2  Eid CHAR(3) PRIMARY KEY,
+  3  Ename VARCHAR2(10),
+  4  Salary NUMBER(7,2),
+  5  Mid CHAR(3),
+  6  FOREIGN KEY (Mid) REFERENCES SkipperN(Eid));
+
+Table created.
+
+SQL> 
+SQL> CREATE TABLE VoyageN (
+  2  Vnum CHAR(4) PRIMARY KEY,
+  3  Sdate DATE,
+  4  Duration NUMBER(2),
+  5  Bnum CHAR(3),
+  6  FOREIGN KEY (Bnum) REFERENCES BoatN(Bnum));
+
+Table created.
+
+SQL> 
+SQL> CREATE TABLE ImplementsN (
+  2  Vnum CHAR(4),
+  3  Eid CHAR(3),
+  4  PRIMARY KEY (Vnum,Eid),
+  5  FOREIGN KEY (Vnum) REFERENCES VoyageN(Vnum),
+  6  FOREIGN KEY (Eid) REFERENCES SkipperN(Eid));
+
+Table created.
+
+SQL> 
+SQL> DESCRIBE BoatN;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ BNUM                                      NOT NULL CHAR(3)
+ BTYPE                                              VARCHAR2(20)
+ CAPACITY                                           NUMBER(2)
+
+SQL> DESCRIBE SkipperN;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EID                                       NOT NULL CHAR(3)
+ ENAME                                              VARCHAR2(10)
+ SALARY                                             NUMBER(7,2)
+ MID                                                CHAR(3)
+
+SQL> DESCRIBE VoyageN;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ VNUM                                      NOT NULL CHAR(4)
+ SDATE                                              DATE
+ DURATION                                           NUMBER(2)
+ BNUM                                               CHAR(3)
+
+SQL> DESCRIBE ImplementsN;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ VNUM                                      NOT NULL CHAR(4)
+ EID                                       NOT NULL CHAR(3)
+
+SQL> SPOOL OFF

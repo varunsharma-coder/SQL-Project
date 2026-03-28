@@ -1,0 +1,30 @@
+LOAD DATA 
+INFILE *
+INSERT INTO TABLE ImplementsN
+FIELDS TERMINATED BY ','
+(Vnum,Eid)
+BEGINDATA 
+v01,e02
+v01,e05
+v02,e02
+v03,e02
+v03,e03
+v04,e05
+v05,e05
+v05,e06
+v06,e08
+v06,e09
+v07,e11
+v07,e12
+v08,e08
+v08,e10
+v09,e11
+v10,e12
+v11,e02
+v11,e06
+v12,e03
+v12,e05
+v13,e06
+v13,e08
+v14,e11
+v15,e12

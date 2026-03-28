@@ -1,0 +1,62 @@
+Script started on 2026-03-16 13:33:33-04:00 [TERM="xterm-256color" TTY="/dev/pts/13" COLUMNS="80" LINES="40"]
+]0;varuns19@sit:~[?2004h[varuns19@sit ~]$ sqlldr varuns19@studb10g
+[?2004lPassword:
+
+control = skipper.ctl
+
+SQL*Loader: Release 19.0.0.0.0 - Production on Mon Mar 16 13:34:25 2026
+Version 19.3.0.0.0
+
+Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.
+
+Path used:      Conventional
+Commit point reached - logical record count 13
+
+Table SKIPPERN:
+  12 Rows successfully loaded.
+
+Check the log file:
+  skipper.log
+for more information about the load.
+]0;varuns19@sit:~[?2004h[varuns19@sit ~]$ [7msqlldr varuns19@studb10g[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csqlldr varuns19@studb10g
+[?2004lPassword:
+
+control = voyage.t ctl
+
+SQL*Loader: Release 19.0.0.0.0 - Production on Mon Mar 16 13:34:44 2026
+Version 19.3.0.0.0
+
+Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.
+
+Path used:      Conventional
+Commit point reached - logical record count 17
+
+Table VOYAGEN:
+  15 Rows successfully loaded.
+
+Check the log file:
+  voyage.log
+for more information about the load.
+]0;varuns19@sit:~[?2004h[varuns19@sit ~]$ [7msqlldr varuns19@studb10g[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csqlldr varuns19@studb10g
+[?2004lPassword:
+
+control = implements.ctl
+
+SQL*Loader: Release 19.0.0.0.0 - Production on Mon Mar 16 13:34:58 2026
+Version 19.3.0.0.0
+
+Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.
+
+Path used:      Conventional
+Commit point reached - logical record count 24
+
+Table IMPLEMENTSN:
+  24 Rows successfully loaded.
+
+Check the log file:
+  implements.log
+for more information about the load.
+]0;varuns19@sit:~[?2004h[varuns19@sit ~]$ exit
+[?2004lexit
+
+Script done on 2026-03-16 13:35:42-04:00 [COMMAND_EXIT_CODE="0"]

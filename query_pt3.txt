@@ -1,0 +1,134 @@
+SQL> @query.sql
+SQL> 
+SQL> SELECT DISTINCT s.Ename
+  2  FROM SkipperN s, ImplementsN i, VoyageN v
+  3  WHERE s.Eid=i.Eid
+  4  AND i.Vnum=v.Vnum
+  5  AND v.Sdate>TO_DATE('01-JUN-25','DD-MON-RR');
+
+ENAME                                                                           
+----------                                                                      
+Wolf                                                                            
+Phillips                                                                        
+Liu                                                                             
+Smith                                                                           
+Jones                                                                           
+Fox                                                                             
+Wang                                                                            
+
+7 rows selected.
+
+SQL> 
+SQL> SELECT v.Vnum, v.Sdate
+  2  FROM VoyageN v, ImplementsN i
+  3  WHERE v.Vnum=i.Vnum
+  4  AND v.Sdate<TO_DATE('15-JUL-25','DD-MON-RR')
+  5  GROUP BY v.Vnum,v.Sdate
+  6  HAVING COUNT(i.Eid)>1;
+
+VNUM SDATE                                                                      
+---- ---------                                                                  
+v08  01-JUL-25                                                                  
+v01  15-JUN-25                                                                  
+v03  25-MAY-25                                                                  
+
+SQL> 
+SQL> SELECT Bnum,Btype
+  2  FROM BoatN
+  3  WHERE Bnum NOT IN
+  4  (SELECT Bnum FROM VoyageN);
+
+BNU BTYPE                                                                       
+--- --------------------                                                        
+b06 Bowrider                                                                    
+b08 Yacht                                                                       
+
+SQL> 
+SQL> SELECT s.Ename,SUM(v.Duration)
+  2  FROM SkipperN s
+  3  LEFT JOIN ImplementsN i ON s.Eid=i.Eid
+  4  LEFT JOIN VoyageN v ON i.Vnum=v.Vnum
+  5  GROUP BY s.Ename;
+
+ENAME      SUM(V.DURATION)                                                      
+---------- ---------------                                                      
+Wolf                     3                                                      
+Green                                                                           
+Phillips                11                                                      
+Liu                      8                                                      
+Wilson                                                                          
+Loftus                                                                          
+Smith                   29                                                      
+Fox                     27                                                      
+Jones                   11                                                      
+Wang                     6                                                      
+
+10 rows selected.
+
+SQL> 
+SQL> SELECT DISTINCT b.Bnum,b.Btype
+  2  FROM BoatN b,VoyageN v
+  3  WHERE b.Bnum=v.Bnum
+  4  AND v.Duration=
+  5  (SELECT MAX(Duration) FROM VoyageN);
+
+BNU BTYPE                                                                       
+--- --------------------                                                        
+b03 Yacht                                                                       
+b10 Deck                                                                        
+
+SQL> 
+SQL> SELECT DISTINCT b.Bnum,b.Btype
+  2  FROM BoatN b,VoyageN v,ImplementsN i,SkipperN s
+  3  WHERE b.Bnum=v.Bnum
+  4  AND v.Vnum=i.Vnum
+  5  AND i.Eid=s.Eid
+  6  AND s.Mid=
+  7  (SELECT Eid FROM SkipperN WHERE Ename='Loftus');
+
+BNU BTYPE                                                                       
+--- --------------------                                                        
+b03 Yacht                                                                       
+b04 Catamaran                                                                   
+b01 Deck                                                                        
+b07 Deck                                                                        
+b10 Deck                                                                        
+
+SQL> 
+SQL> SELECT DISTINCT s.Eid,s.Ename
+  2  FROM SkipperN s, ImplementsN i,VoyageN v,BoatN b
+  3  WHERE s.Eid=i.Eid
+  4  AND i.Vnum=v.Vnum
+  5  AND v.Bnum=b.Bnum
+  6  AND b.Btype IN ('Deck','Catamaran');
+
+EID ENAME                                                                       
+--- ----------                                                                  
+e06 Smith                                                                       
+e11 Phillips                                                                    
+e10 Wang                                                                        
+e08 Fox                                                                         
+e09 Wolf                                                                        
+e02 Smith                                                                       
+e05 Fox                                                                         
+e12 Liu                                                                         
+
+8 rows selected.
+
+SQL> 
+SQL> SELECT DISTINCT b.Bnum,b.Btype
+  2  FROM BoatN b,VoyageN v
+  3  WHERE b.Bnum=v.Bnum
+  4  AND v.Duration<
+  5  (SELECT AVG(Duration) FROM VoyageN);
+
+BNU BTYPE                                                                       
+--- --------------------                                                        
+b03 Yacht                                                                       
+b04 Catamaran                                                                   
+b01 Deck                                                                        
+b02 Bowrider                                                                    
+
+SQL> 
+SQL> 
+SQL> SPOOL OFF

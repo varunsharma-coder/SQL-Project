@@ -1,0 +1,32 @@
+SET ECHO ON 
+
+CREATE TABLE BoatN (
+Bnum CHAR(3) PRIMARY KEY, 
+Btype VARCHAR2(20), 
+Capacity NUMBER(2)); 
+
+CREATE TABLE SkipperN (
+Eid CHAR(3) PRIMARY KEY, 
+Ename VARCHAR2(10), 
+Salary NUMBER(7,2), 
+Mid CHAR(3), 
+FOREIGN KEY (Mid) REFERENCES SkipperN(Eid)); 
+
+CREATE TABLE VoyageN (
+Vnum CHAR(4) PRIMARY KEY, 
+Sdate DATE, 
+Duration NUMBER(2), 
+Bnum CHAR(3),
+FOREIGN KEY (Bnum) REFERENCES BoatN(Bnum)); 
+
+CREATE TABLE ImplementsN (
+Vnum CHAR(4), 
+Eid CHAR(3), 
+PRIMARY KEY (Vnum,Eid), 
+FOREIGN KEY (Vnum) REFERENCES VoyageN(Vnum), 
+FOREIGN KEY (Eid) REFERENCES SkipperN(Eid));
+
+DESCRIBE BoatN;
+DESCRIBE SkipperN; 
+DESCRIBE VoyageN;
+DESCRIBE ImplementsN;  

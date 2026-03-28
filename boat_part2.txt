@@ -1,0 +1,66 @@
+SQL> @boat_insertion.sql
+SQL> 
+SQL> INSERT INTO BoatN VALUES ('b01','Deck',8);
+
+1 row created.
+
+SQL> INSERT INTO BoatN VALUES ('b02','Bowrider',10);
+
+1 row created.
+
+SQL> INSERT INTO BoatN VALUES ('b03','Yacht',6);
+
+1 row created.
+
+SQL> INSERT INTO BoatN VALUES ('b04','Catamaran',25);
+
+1 row created.
+
+SQL> INSERT INTO BoatN VALUES ('b05','Catamaran',35);
+
+1 row created.
+
+SQL> INSERT INTO BoatN VALUES ('b06','Bowrider',12);
+
+1 row created.
+
+SQL> INSERT INTO BoatN VALUES ('b07','Deck',12);
+
+1 row created.
+
+SQL> INSERT INTO BoatN VALUES ('b08','Yacht',16);
+
+1 row created.
+
+SQL> INSERT INTO BoatN VALUES ('b09','Bowrider',15);
+
+1 row created.
+
+SQL> INSERT INTO BoatN VALUES ('b10','Deck',10);
+
+1 row created.
+
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> 
+SQL> SELECT * FROM BoatN;
+
+BNU BTYPE                  CAPACITY                                             
+--- -------------------- ----------                                             
+b01 Deck                          8                                             
+b02 Bowrider                     10                                             
+b03 Yacht                         6                                             
+b04 Catamaran                    25                                             
+b05 Catamaran                    35                                             
+b06 Bowrider                     12                                             
+b07 Deck                         12                                             
+b08 Yacht                        16                                             
+b09 Bowrider                     15                                             
+b10 Deck                         10                                             
+
+10 rows selected.
+
+SQL> SPOOL OFF

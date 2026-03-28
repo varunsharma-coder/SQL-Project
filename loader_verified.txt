@@ -1,0 +1,85 @@
+SQL> SELECT * FROM SkipperN;
+
+EID ENAME          SALARY MID                                                   
+--- ---------- ---------- ---                                                   
+e01 Wilson          53000                                                       
+e04 Loftus          41000                                                       
+e07 Green           48000                                                       
+e02 Smith           48000 e01                                                   
+e03 Jones           38000 e01                                                   
+e05 Fox             54000 e04                                                   
+e06 Smith           45000 e04                                                   
+e08 Fox             49000 e04                                                   
+e09 Wolf            41000 e04                                                   
+e10 Wang            32000 e01                                                   
+e11 Phillips        33000 e07                                                   
+
+EID ENAME          SALARY MID                                                   
+--- ---------- ---------- ---                                                   
+e12 Liu             27000 e07                                                   
+
+12 rows selected.
+
+SQL> SELECT * FROM VoyageN;
+
+VNUM SDATE       DURATION BNU                                                   
+---- --------- ---------- ---                                                   
+v01  15-JUN-25          2 b01                                                   
+v02  15-JUL-25          3 b02                                                   
+v03  25-MAY-25          4 b03                                                   
+v04  22-AUG-25          3 b01                                                   
+v05  28-AUG-25          2 b04                                                   
+v06  06-SEP-25          3 b04                                                   
+v07  21-SEP-25          4 b05                                                   
+v08  01-JUL-25          6 b07                                                   
+v09  01-JUL-25          4 b09                                                   
+v10  12-JUN-25          1 b01                                                   
+v11  31-JUL-25          7 b10                                                   
+
+VNUM SDATE       DURATION BNU                                                   
+---- --------- ---------- ---                                                   
+v12  01-AUG-25          7 b03                                                   
+v13  17-AUG-25          4 b04                                                   
+v14  01-SEP-25          3 b02                                                   
+v15  18-SEP-25          3 b03                                                   
+
+15 rows selected.
+
+SQL> SELECT * FROM ImplementsN;
+
+VNUM EID                                                                        
+---- ---                                                                        
+v01  e02                                                                        
+v01  e05                                                                        
+v02  e02                                                                        
+v03  e02                                                                        
+v03  e03                                                                        
+v04  e05                                                                        
+v05  e05                                                                        
+v05  e06                                                                        
+v06  e08                                                                        
+v06  e09                                                                        
+v07  e11                                                                        
+
+VNUM EID                                                                        
+---- ---                                                                        
+v07  e12                                                                        
+v08  e08                                                                        
+v08  e10                                                                        
+v09  e11                                                                        
+v10  e12                                                                        
+v11  e02                                                                        
+v11  e06                                                                        
+v12  e03                                                                        
+v12  e05                                                                        
+v13  e06                                                                        
+v13  e08                                                                        
+
+VNUM EID                                                                        
+---- ---                                                                        
+v14  e11                                                                        
+v15  e12                                                                        
+
+24 rows selected.
+
+SQL> SPOOL OFF
